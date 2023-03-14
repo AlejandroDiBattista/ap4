@@ -23,9 +23,9 @@ class Tag {
     }
 
     static crear(...lista) { 
-        const nombre     = lista.shift();
+        const nombre    = lista.shift();
         const atributos = (lista.length > 0 && isAttr(lista[0])) ? lista.shift() : {};
-        const hijos      = lista.map(toNode);
+        const hijos     = lista.map(toNode);
 
         return new Tag(nombre, atributos, hijos);
     }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de Datos Personales</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Formulario de Datos Personales</h1>
+    <form id="formulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre"><br>
+
+      <label for="dni">DNI:</label>
+      <input type="text" id="dni" name="dni"><br>
+
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" name="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+      </select><br>
+
+      <label for="telefono">Número telefónico:</label>
+      <input type="tel" id="telefono" name="telefono"><br>
+
+      <button type="submit" onclick="mostrarDatos()">Enviar</button>
+    </form>
+
+    <table id="tablaDatos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>DNI</th>
+          <th>Sexo</th>
+          <th>Número telefónico</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyDatos"></tbody>
+    </table>
+
+    <script>
+      function mostrarDatos() {
+        // Obtener los valores de los campos del formulario
+        let nombre = document.getElementById("nombre").value;
+        let dni = document.getElementById("dni").value;
+        let sexo = document.getElementById("sexo").value;
+        let telefono = document.getElementById("telefono").value;
+
+        // Crear una nueva fila en la tabla y agregar los valores
+        let nuevaFila = document.createElement("tr");
+        nuevaFila.innerHTML = "<td>" + nombre + "</td><td>" + dni + "</td><td>" + sexo + "</td><td>" + telefono + "</td>";
+
+        // Agregar la fila a la tabla
+        let tabla = document.getElementById("tbodyDatos");
+        tabla.appendChild(nuevaFila);
+
+        // Limpiar los campos del formulario
+        //document.getElementById("formulario").reset();
+      }
+    </script>
+  </body>
+</html>
