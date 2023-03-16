@@ -1,0 +1,82 @@
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: rgb(240, 222, 222);
+    padding: 10px;
+}
+
+/* MENU */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(223, 138, 138);
+}
+
+img#logo {
+    width: 150px;
+    margin: 0px 20px;
+    padding: 0px;
+}
+/* Selector de ID */
+nav ul {
+    color: orange;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* background-color: bisque; */
+}
+
+/* Selector de descendencia */
+nav li {
+    list-style: none;
+    padding: 8px 20px;
+    text-align: center;
+    border: 1px solid black;
+    width: 100px;
+}
+
+/* Pseudo-clase */
+nav li:hover {
+    background-color: yellow;
+}
+nav li:a {
+    text-decoration: none;
+    color: black;
+}	
+/* TITULOS */
+/* Selector simple */
+h1 { 
+    margin: 0 20px;
+}
+
+/* Selector compuesto */
+h1, h2 { 
+    font-family: Calibri, sans-serif;
+    font-style: italic;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* PARRAFOS */
+/* Contenedor de parrafos */
+#parrafos {
+    background-color: lightblue;
+}
+
+#parrafos > p {
+    margin: 10px;
+}
+
+p {
+    margin: 10px;
+}
+
+.par { /* Selector de clase */
+    color: blue;
+}
+
+.impar {
+    color: green;
+}
+
