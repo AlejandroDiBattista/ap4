@@ -1,0 +1,21 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo 'Tabla de multiplicar'</title>
+
+        <link  type="text/css" rel="stylesheet" href="estilo.css" />
+        <script type="text/javascript" src="codigo.js"></script>
+    </head>
+    
+    <body>
+        <div>
+            <h1>Tabla de multiplicar</h1>
+            <label for="numero">Ingresar numero </label>
+            <input type="number" name="numero" id="numero" value="3" onchange="generarTabla()">
+            <!-- onchage para actualizar cada vez que cambia el valor -->
+            <button onclick="generarTabla()">Generar</button>
+            <!-- onclick para actualizar cuando se pulsa el boton -->
+            <div id="resultado"></div>
+        </div>
+    </body>
+</html>

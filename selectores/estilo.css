@@ -1,0 +1,56 @@
+/* Importar fuente "Open Sans" de Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+    color: yellow;
+    font-size: 20px;
+}
+.frase {
+    color: blue;
+    font-style: italic;
+}
+#indice {
+    color: green;
+    font-size: 12px;
+}
+
+#indice h2 {
+    color: pink;
+}
+
+.capitulo h2 {
+    color: orange;
+}
+
+p {
+    font-size: 12px;
+}
+
+.capitulo div > p:first-child {
+    color: blue;
+    text-align: center;
+    font-style: italic;
+}
+
+.capitulo div {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#indice td:first-child {
+    width: 400px;
+}
+
+#indice tr:nth-child(even) {
+    color: black;
+    background-color: gray;
+}
+
+#indice tr:nth-child(odd) {
+    color: black;
+    background-color: red;
+}

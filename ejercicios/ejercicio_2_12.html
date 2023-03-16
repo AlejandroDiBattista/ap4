@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculo cantidad de cajas</title>
+</head>
+<body>
+    <script>
+        function calcularCajas(bultos, bultosPorCaja) {
+            if (bultos < 0 || bultosPorCaja <= 0) {
+                return "ERROR";
+            }
+
+            let cajas = Math.floor(bultos / bultosPorCaja);
+            let bultosSueltos = bultos % bultosPorCaja;
+
+            return { cajas: cajas, bultos: bultosSueltos };
+        }
+
+        function mostrarCalculo(){
+            let bultos        = document.getElementById("bultos").value;
+            let bultosPorCaja = document.getElementById("bultosPorCaja").value;
+
+            let resultado = calcularCajas(bultos, bultosPorCaja);
+
+            let salida = ""
+            salida += "Cajas completas: " + resultado.cajas + "<br>";
+            salida += "Bultos sueltos: " + resultado.bultos;
+
+            document.getElementById("resultado").innerHTML = salida;
+
+        }
+    </script>
+
+    <p>Ingrese la cantidad de bultos:</p> 
+    <input type="text" id="bultos"><br>
+    <p>Ingrese la cantidad de bultos por caja:</p> 
+    <input type="text" id="bultosPorCaja"><br>
+
+    <button onclick="mostrarCalculo()">Calcular</button>
+    <div id="resultado"></div>
+
+</body>
+</html>
