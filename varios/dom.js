@@ -30,10 +30,10 @@ class Tag {
         return new Tag(nombre, atributos, hijos);
     }
 
-    toString(indent='') {
+    toString(indent = '') {
         const attrs = attrToString(this.atributos);
 
-        const open  = `${this.nombre} ${attrs}`.trim();
+        const open = `${this.nombre} ${attrs}`.trim();
         const close = `${this.nombre}`;
 
         if (this.contenido.length === 0) { // Si no hay hijos hacer que la etiqueta sea auto-cerrada
@@ -44,7 +44,7 @@ class Tag {
             return `${indent}<${open}>${this.contenido[0].toString()}</${close}>`;
         }
 
-        const contenido = this.contenido.map(item => item.toString('\t' + indent)).join("\n");
+        const contenido = this.contenido.map(item => item.toString(`\t${indent}`).join('\n'));
         return `${indent}<${open}>\n${contenido}\n${indent}</${close}>`;
     }
 }
@@ -66,7 +66,7 @@ const li    = (...lista) => Tag.crear('li', ...lista);
 const a     = (...lista) => Tag.crear('a', ...lista);
 const img   = (...lista) => Tag.crear('img', ...lista);
 
-console.log("Ejemplo 4");
+console.log('Ejemplo 4');
 
 const pagina = html({ lang: 'es', meta: 'xxx' },
     head(title('Ejemplo 4')),
