@@ -1,4 +1,6 @@
-Este es un archivo comun creado desde el sistema operativo
+Este es un archivo común creado desde el sistema operativo
 
 
-Esta es otra modificacion
+Esta es otra modificación
+
+seguir editando porque estamos en un IDE
