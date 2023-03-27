@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        console.log(window.location.search);
+        console.log(decodeURIComponent(window.location.search));
+
+        // Obtener el valor de un parámetro
+        const a = urlParams.get('a');
+        const b = urlParams.get('b');
+        console.log(`a = ${a}, b = ${b}`);
+        // Obtener todos los parámetros como un objeto
+        const parametros = Object.fromEntries(urlParams.entries());
+        console.log(`parametros = ${urlParams.entries()}`);
+        console.log(`parametros = ${parametros}`);
+
+        let ahora = new Date();
+        console.log(ahora);
+        let h = String(ahora.getHours()).padStart(2, '0');
+        let m = String(ahora.getMinutes()).padStart(2, '0');
+        let s = String(ahora.getSeconds()).padStart(2, '0');
+        console.log(`${h}:${m}:${s}`);
+    </script>
+</body>
+</html>
