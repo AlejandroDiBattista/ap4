@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Reloj</title>
+</head>
+    <script>
+        function actualizarHora(){
+            let fecha = new Date();
+            let salida = document.querySelector("#reloj")
+            salida.innerHTML = fecha.toLocaleTimeString();
+        }
+
+        // setTimeout(actualizarHora, 3000)
+        setInterval(actualizarHora, 100) // Actualiza cada 100 milisegundos (0.1 segundos)
+    </script>
+    <body>
+        <h1>Reloj</h1>
+        <div id="reloj">Aca va la hora</div>
+    </body>
+</html>
