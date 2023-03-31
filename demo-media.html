@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo media</title>
+</head>
+<style>
+    .contenedor {
+        background-color: green;
+    }
+
+    @media (min-width: 600px) {
+        .contenedor {
+            background-color: red;
+        }
+    }
+    @media (min-width: 800px) and (max-width: 1000px) {
+        .contenedor {
+            background-color: blue;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    }
+</style>
+<body>
+    <div class="contenedor">
+        <h1>Titulo</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore,
+             vero doloremque iste corporis rem veritatis sint ad aspernatur illum ut 
+             laudantium, veniam quo, reiciendis sit sunt fugiat velit est magni?
+        </p>
+    </div>
+</body>
+</html>
