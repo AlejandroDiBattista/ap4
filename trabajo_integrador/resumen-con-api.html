@@ -40,7 +40,7 @@
 
             for(let i = 1; i <= 5; i++){ // Llama 5 veces al API para traer 5 usuarios
                 $.ajax(settings).done(function (response) {
-                    datos.push(response);
+                    datos.push(response); // Agrega el usuario al array de datos
                     mostrarInforme(datos)
                 });  
             }
@@ -93,5 +93,4 @@
             </div>
         </div>
     </body>
-
 </html>
