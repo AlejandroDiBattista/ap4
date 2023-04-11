@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let contador = 0;
+        function mostrarMensaje() {
+            contador++;
+            console.log("Hola mundo " + contador + " veces");
+        }
+
+
+        console.log("Antes de la petición")
+        setTimeout(
+            function () {
+                contador++;
+                console.log("Hola mundo " + contador + " veces");
+            }, 
+        1000);
+        console.log("Después de la petición")
+
+
+    </script>
+</body>
+</html>

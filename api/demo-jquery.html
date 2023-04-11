@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Demo API</title>
+        <!-- Importamos jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    </head>
+    <body>
+        <script>
+
+            function mostrarNombres(data, status){
+                console.log(data);
+                let nombres = data.map( user => `<li>${user.name}</li>`);
+                $("#users").html(nombres);
+            }
+
+            const url = 'https://jsonplaceholder.typicode.com/users';
+
+            function llamarApi(){
+                console.log("Antes")
+                $.get("https://jsonplaceholder.typicode.com/users", mostrarNombres);
+                console.log("Despues")
+
+            }
+
+            function llamarClima(){
+                const settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://open-weather13.p.rapidapi.com/city/landon",
+                    "method": "GET",
+                    "headers": {
+                        "X-RapidAPI-Key": "3a7aa41260msh95580454919df58p124a67jsnf093f211dfc7",
+                        "X-RapidAPI-Host": "open-weather13.p.rapidapi.com"
+                    }
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    let velocidad = response.wind.speed;
+                    $("#users").html(`<li>El viento tienen una velocidado de ${velocidad}</li>`)
+                });
+            }
+
+</script>
+
+        <h1>Listado de usuarios</h1>
+        <button onclick="llamarApi()">Mostrar usuarios</button>
+        <button onclick="llamarClima()">Mostrar Clima</button>
+        <ul id="users">
+        </ul>
+    </body>
+</html>
