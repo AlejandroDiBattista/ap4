@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <title>Demo Carrito de compra</title>
+    
     <script>
 
         // Lee el carrito del localStorage y lo devuelve como un array de objetos
@@ -74,7 +75,26 @@
         }
 
         function pagar(){
+            
             alert("Gracias por su compra")
+
+            /* 
+            // Usando un API REST
+            $.ajax({
+                url: "http://localhost:3000/confirmar_compra",
+                type: "POST",
+                data: JSON.stringify(carrito),
+                contentType: "application/json",
+                success: function(data){
+                    console.log(data);
+                    carrito = [];
+                    guardarCarrito(carrito);
+                    mostrarCarrito();
+                }
+            })
+
+            */
+           
             carrito = [];
 
             guardarCarrito(carrito);
@@ -83,6 +103,7 @@
 
         function mostrarCatalogo(){
             let salida = "";
+
             catalogo.forEach(item => {
                 // Generar el HTML de cada producto usando una plantilla de texto (template string)
                 // Usando una CARD de Bootstrap
@@ -99,7 +120,7 @@
                                 <div class="row justify-content-between">
                                     <span class="col-6 h3 text-danger">$${item.precio} c/u</span>
                                     <button type="button" class="btn btn-outline-primary col-5" onclick="agregar(${item.id})">
-                                        Comprar
+                                        Comprar 
                                     </button>
                                 </div>
                             </div>
@@ -112,14 +133,15 @@
         }
     
         function mostrarCarrito(){
-            let salida = "";
-
+            
             // Calculo la cantidad de productos y el importe total
             let cantidad = carrito.reduce( (acum, item) => acum + item.cantidad, 0);
-            let importe  = carrito.reduce( (acum, item) => acum + item.precio * item.cantidad, 0);
-
+            let importe  = carrito.reduce( (acum, item) => acum + item.cantidad * item.precio , 0);
+            
             // Genero el HTML de cada producto usando una plantilla de texto (template string)
             // Usamos ListGroup de Bootstrap
+            
+            let salida = "";
             carrito.forEach(item => {
                 salida +=
                 `<li class="list-group-item">
@@ -131,6 +153,7 @@
                             <p class="m-0"><b>${item.nombre}</b></p>
                             ${item.cantidad} x $${item.precio} = $${item.cantidad * item.precio}
                         </span>
+                        
                         <button type="button" class="col btn display-1" onclick="quitar(${item.id})">
                             <i class="las la-trash"></i>
                         </button>
@@ -178,7 +201,9 @@
 
 <body>
     <div class="container text-bg-light">
+
         <div class="display-1 text-center my-4 p-4">Micro mercado</div>   
+        
         <div class="row justify-content-around">
             <div class="col-7">
                 <h4>Productos</h4>
@@ -189,6 +214,8 @@
                 <div id="carrito" class="sticky-sm-top"></div>
             </div>
         </div>
-    </div> 
+    </div>
+
 </body>
+
 </html>

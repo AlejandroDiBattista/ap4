@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar datos. Paso 2</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<script>
+    function mostrarDatos(){
+        let parametros = new URLSearchParams(window.location.search);
+
+        let nombre = parametros.get("nombre");
+        let edad   = parametros.get("edad");
+
+        console.log(`Nombre: ${nombre} Edad: ${edad}`);
+
+        $("#mostrar").html(`<b>${nombre}</b> tiene <b>${edad}</b> años`);
+    }	
+
+    $(document).ready(function(){
+        mostrarDatos();
+    });
+
+</script>
+
+<body>
+    <div class="conteiner">
+        <div class="row col-6 m-auto">
+
+            <h3 class="text-info mt-3">Mostrar Datos</h3>
+            
+            <div id="mostrar" class="display-2"></div>
+            
+            <button type="button" class="btn btn-primary mt-3" onclick="history.back()">Volver</button>
+        </div>
+    </div>
+</body>
+</html>

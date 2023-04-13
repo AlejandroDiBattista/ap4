@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo persistencia</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<script>
+    let contador = 0;
+    function guardar(){
+        contador++;
+        localStorage.setItem("datos", "Guardamos " + contador + " veces");
+        
+
+        let persona = {
+            nombre: "Alejandro",
+            edad: 55
+        }
+
+        localStorage.setItem("persona", JSON.stringify(persona));
+        
+        let carrito = [
+            { codigo: 1, nombre: "Coca Cola", precio: 100, cantidad: 1},
+            { codigo: 2, nombre: "Papas Fritas", precio: 200, cantidad: 2},
+            { codigo: 3, nombre: "Manies", precio: 300, cantidad: 1},
+        ]
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        mostrar();
+    }
+    function recuperar(){
+        mostrar()
+    }
+
+    function mostrar(){
+        let datos = localStorage.getItem("datos");
+
+        $("#datos").html(datos);
+        $("#datos").append("<br>" + localStorage.getItem("carrito"));
+    }
+
+    $(document).ready(function(){
+        mostrar();
+    });
+</script>
+<body>
+    <h3>Ejemplo de guardar datos</h3>
+    <button type="button" onclick="guardar()">Guardar</button>
+    <button type="button" onclick="recuperar()">Recuperar</button>
+    <div id="datos">
+    </div>
+</body>
+</html>
