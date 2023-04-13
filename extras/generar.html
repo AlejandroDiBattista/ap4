@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <script>
+    function generarLista(){
+        let lista = document.querySelector("#lista");
+        let datos = ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"];
+        let salida = datos.map(item => `<li>${item}</li>`).join("")  ;
+        console.log(salida)
+        lista.innerHTML = salida;
+    }
+    </script>
+        <h2>Demo generar lista</h2>
+        <ul id="lista">
+            <b>La lista está vacia</b>
+        </ul>
+        <button onclick="generarLista()">Generar lista</button>
+    </body>
+
+</html>

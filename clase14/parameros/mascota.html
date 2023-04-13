@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Demo pase de parámetros</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    </head>
+
+    <script>
+        function mostrarMascota(){
+            // Obtengo los parámetros de la url
+            const parametros = new URLSearchParams(window.location.search);
+
+            // Obtengo el valor del parámetro 
+            const nombre = parametros.get('nombre');
+            const tipo = parametros.get('tipo');
+
+            // Muestro el valor de los parámetros
+            if (nombre != null && tipo != null){
+                $(".resultado").html(`<b>${nombre}</b> es un <b>${tipo}</b>`);
+            } else {
+                $(".resultado").html("No se que mascota mostrar 🤷🏼‍♂️");
+            }
+        }
+        $(document).ready(function(){
+            mostrarMascota();
+        });
+</script>
+<body>
+    <div class="container">
+        
+        <div class="row justify-content-center col-6 m-auto">
+            <h3 class="text-info p-5">Ejemplo de recepción de parámetro</h3>
+            <div class="align-items-center">
+
+                <div class="resultado display-2" m-auto></div>
+                <!-- 
+                    Notese que regresa a la pagina desde la que fue llamada con 'history.back()'' 
+                    lo que hace que el formulario conserve los valores ingresados
+                -->
+                <button class="btn btn-outline-primary mt-4" onclick="history.back()">Volver a la página anterior</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

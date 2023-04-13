@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta charset="UTF-8">
     <title>Demo asistente</title>
@@ -17,42 +17,53 @@
       }
     </style>
     <script>
-
+      // Recorrido de los pasos del formulario
       function irProximoPaso() {
         const actual = $(".form-section.current");
         const siguiente = actual.next();
 
-        if (siguiente != null) {
-          actual.removeClass("current");
-          siguiente.addClass("current");
-        }
+        actual.removeClass("current");
+        siguiente.addClass("current");
       }
 
       function irAnteriorPaso() {
         const actual = $(".form-section.current");
         const anterior = actual.prev();
 
-        if (anterior != null) {
-          actual.removeClass("current");
-          anterior.addClass("current");
-        }
+        actual.removeClass("current");
+        anterior.addClass("current");
       }
 
+        function irPaso(n){
+        const actual = $(".form-section.current");
+        const paso = $(".form-section").eq(n);
+
+        actual.removeClass("current");
+        paso.addClass("current");
+      }
+
+      // Validaciones de los campos del formulario
       function validarNombre() {
         let nombre = $("#nombre").val()
 
         if(nombre.length < 3){
-          alert("El nombre debe tener al menos 3 caracteres", "Error");
+          irPaso(0);
+          $("#nombre").focus();
+          alert("El nombre debe tener al menos 3 caracteres");
           return false;
         }
         return true;
       }
 
-      function validarCodigoPostal() {
-        let codigo_postal = $("#codigo-postal").val()
+      function validarDireccion() {
+        let direccion = $("#direccion").val()
 
-        if(codigo_postal.length != 4){
-          alert("El código postal debe tener 4 dígitos" );
+        if(direccion.length < 3){
+          // Regresa al campo donde encontró el error (Primero muestra el paso 1 y luego cambia el foco al campo)
+          irPaso(1);
+          $("#direccion").focus();
+          
+          alert("La dirección debe tener al menos 3 caracteres");
           return false;
         }
         return true;
@@ -62,6 +73,9 @@
         let numero_tarjeta = $("#numero-tarjeta").val()
 
         if(numero_tarjeta.length != 16){
+          irPaso(2);
+          $("#numero-tarjeta").focus();
+
           alert("El número de tarjeta debe tener 16 dígitos");
           return false;
         }
@@ -69,25 +83,20 @@
       }
 
       function enviarRegistro() {
-        if(validarNombre() && 
-           validarCodigoPostal() && 
-           validarNumeroTarjeta()){
+        if(validarNombre() && validarDireccion() && validarNumeroTarjeta()){
             // Aquí va la lógica para enviar los datos del formulario a través de una API REST
-        } else {
-          alert("Registro fallido");
+            alert("Registro exitoso");
+            irPaso(0);
         }
       }
 
     </script>
-
-</head>
-
+  </head>
   <body>
-
-    <div class="container">
-      <h2 class="text-primary">Registrar Venta</h2>
-      <div class="row">
-        <div class="col-6 col-md-12">
+    <div class="container ">
+      <h2 class="text-primary mx-auto pl-3">Registrar Ventas</h2>
+      <div class="row mx-auto">
+        <div class="col-6">
           <form onsubmit="enviarRegistro(); return false;">
 
             <div class="form-section current">
@@ -112,9 +121,6 @@
 
               <label for="localidad" class="form-label">Localidad:</label>
               <input type="text" id="localidad" name="localidad" class="form-control">
-
-              <label for="codigo-postal" class="form-label">Código Postal:</label>
-              <input type="number" id="codigo-postal" name="codigo-postal" class="form-control">
 
               <div class="row justify-content-between p-0 m-0">
                 <button type="button" class="btn btn-outline-info mt-4 col-4" onclick="irAnteriorPaso()">Anterior</button>

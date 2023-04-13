@@ -22,7 +22,7 @@
         // tomado de https://rapidapi.com/apidojo/api/tasty/
 
         function traerDatos(){
-            let datos = [];
+            let usuarios = [];
 
             // Trae un usuario generardo al azar. 
             // Ver en https://rapidapi.com/apininjas/api/random-user-by-api-ninjas/
@@ -39,9 +39,9 @@
             };
 
             for(let i = 1; i <= 5; i++){ // Llama 5 veces al API para traer 5 usuarios
-                $.ajax(settings).done(function (response) {
-                    datos.push(response); // Agrega el usuario al array de datos
-                    mostrarInforme(datos)
+                $.ajax(settings).done(function (usuario) {
+                    usuarios.push(usuario); // Agrega el usuario al array de datos
+                    mostrarInforme(usuarios)
                 });  
             }
         }
@@ -49,7 +49,6 @@
         function mostrarInforme(datos){      
             let informe = $("#informe");
     
-            let i = 0;
             informe.html("");
             datos.forEach( dato => {
                 informe.append(`
@@ -63,8 +62,8 @@
         }
        
         // Ejemplo de funcion llamada al hacer click en un boton Saludar
-        function saludar(i){
-            alert(i);
+        function saludar(mensaje){
+            alert(mensaje);
         }
 
         // Acciones de los botones
@@ -82,11 +81,11 @@
 
     <body>
         <div class="container">
-            <div class="col-6">
-                <h2 class="text-primary">Informe con datos traidos del API</h2>
+            <div class="col-6 mx-auto">
+                <h2 class="text-primary mt-2">Informe con datos traidos del API</h2>
                 <div class="row justify-content-between mt-4 p-3">
                     <button id="generar" class="btn btn-primary col-4">Generar Informe</button>
-                    <button id="borrar" class="btn btn-outline-info col-2">Borrar</button>
+                    <button id="borrar"  class="btn btn-outline-info col-2">Borrar</button>
                 </div>
                 <ul id="informe" class="list-group my-3"></ul>
                 <p id="mensaje" class="m-4 text-warning"></p>

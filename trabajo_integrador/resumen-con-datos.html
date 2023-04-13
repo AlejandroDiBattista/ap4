@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,62 +9,61 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-        <script>
-        
-        // Instala los eventos de los botones
-        $(document).ready(function(){
-            $("#generar").click(generarInforme);
-            $("#borrar").click(borrarInforme);
-        });
-
-        // Ejemplo tomandos datos locales
-        function traerDatos(){
-             let datos = [
-                { nombre: "Juan",  apellido: "Perez",     edad: 30, email: "juan.perez@gmail.com" },
-                { nombre: "Maria", apellido: "Gomez",     edad: 25, email: "maria.gomez@gmail.com" },
-                { nombre: "Pedro", apellido: "Gonzalez",  edad: 35, email: "pedro.gonzalez@gmail.com" },
-                { nombre: "Jose",  apellido: "Rodriguez", edad: 40, email: "jose.rodriguez@gmail.com" },
-                { nombre: "Ana",   apellido: "Lopez",     edad: 20, email: "ana.lopez@gmail.com" },
-            ]
-            mostrarInforme(datos);
-        }
-
-         // Generar el informe a partir de los datos
-        function mostrarInforme(datos){      
-            let informe = $("#informe");
-            informe.html("");
-            datos.forEach( dato => {
-                informe.append(`
-                    <li class="list-group-item">
-                        <h4>${dato.nombre} ${dato.apellido}</h4>
-                        <p>${dato.email} años<p>
-                        <button onclick="saludar( 'Hola ${dato.nombre}' )" class="btn btn-outline-primary col-2 btn-sm">Saludar</button>
-                    </li>`);
+        <script>    
+            // Instala los eventos de los botones
+            $(document).ready(function(){
+                $("#generar").click(generarInforme);
+                $("#borrar").click(borrarInforme);
             });
-        }
 
-        // Ejemplo de funcion llamada al hacer click en un boton saludar
-        function saludar(i){
-            alert(i);
-        }
+            // Ejemplo tomandos datos locales
+            function traerDatos(){
+                let datos = [
+                    { nombre: "Juan",  apellido: "Perez",     edad: 30, email: "juan.perez@gmail.com" },
+                    { nombre: "María", apellido: "Gomez",     edad: 25, email: "maria.gomez@gmail.com" },
+                    { nombre: "Pedro", apellido: "Gonzalez",  edad: 35, email: "pedro.gonzalez@gmail.com" },
+                    { nombre: "José",  apellido: "Rodriguez", edad: 40, email: "jose.rodriguez@gmail.com" },
+                    { nombre: "Ana",   apellido: "López",     edad: 20, email: "ana.lopez@gmail.com" },
+                ]
+                mostrarInforme(datos);
+            }
 
-        // Acciones de los botones
-        function generarInforme(){
-            // Muestra un mensaje mientras se traen los datos
-            $("#informe").html("Trayendo datos locales...");
-            traerDatos();
-        }
+            // Generar el informe a partir de los datos
+            function mostrarInforme(datos){      
+                let informe = $("#informe");
+                informe.html("");
+                datos.forEach( dato => {
+                    informe.append(`
+                        <li class="list-group-item">
+                            <h4>${dato.nombre} ${dato.apellido}</h4>
+                            <p>${dato.email}<p>
+                            <button onclick="saludar( 'Hola ${dato.nombre}' )" class="btn btn-outline-primary col-2 btn-sm">Saludar</button>
+                        </li>`);
+                });
+            }
 
-        function borrarInforme(){
-            $("#informe").html("");
-        }
-    </script>
+            // Ejemplo de función llamada al hacer click en un boton saludar
+            function saludar(mensaje){
+                alert(mensaje);
+            }
+
+            // Acciones de los botones
+            function generarInforme(){
+                // Muestra un mensaje mientras se traen los datos
+                $("#informe").html("Trayendo datos locales...");
+                traerDatos();
+            }
+
+            function borrarInforme(){
+                $("#informe").html("");
+            }
+        </script>
     </head>
 
     <body>
         <div class="container">
-            <div class="col-6">
-                <h2 class="text-primary">Informe con datos locales</h2>
+            <div class="col-6 mx-auto">
+                <h2 class="text-primary mt-2">Informe con datos locales</h2>
                 <div class="row justify-content-between mt-4 p-3">
                     <button id="generar" class="btn btn-primary col-4">Generar Informe</button>
                     <button id="borrar" class="btn btn-outline-info col-2">Borrar</button>
@@ -75,4 +73,5 @@
             </div>
         </div>
     </body>
+    
 </html>
